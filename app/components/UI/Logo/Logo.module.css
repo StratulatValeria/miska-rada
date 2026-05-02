@@ -1,0 +1,31 @@
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--primary-blue); /* Твій основний колір з globals.css */
+}
+
+.icon {
+  width: 40px; /* Золотий стандарт для хедера */
+  height: 48px;
+  fill: currentColor; /* SVG буде приймати колір тексту */
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.city {
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.authority {
+  font-weight: 400;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
