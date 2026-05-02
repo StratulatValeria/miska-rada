@@ -1,0 +1,36 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.primary {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.primary:hover {
+  background-color: #004494;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.outline:hover {
+  background: rgba(0, 87, 183, 0.05);
+}
+
+.btnIcon {
+  fill: currentColor;
+}

@@ -1,0 +1,92 @@
+.tableContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background: #f8f9fa;
+  text-align: left;
+  padding: 1rem;
+  color: #6c757d;
+  font-weight: 600;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #edf2f7;
+  vertical-align: middle;
+}
+
+.row:hover {
+  background-color: #fcfcfd;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.date {
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+.title a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.title a:hover {
+  color: var(--primary-blue);
+  text-decoration: underline;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statusAccepted {
+  background: #e6fffa;
+  color: #2d3748;
+  border: 1px solid #b2f5ea;
+}
+.statusPending {
+  background: #fffaf0;
+  color: #2d3748;
+  border: 1px solid #feebc8;
+}
+.statusRejected {
+  background: #fff5f5;
+  color: #2d3748;
+  border: 1px solid #feb2b2;
+}
+
+.fileBadge {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  background: #edf2f7;
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-right: 4px;
+  border: 1px solid #cbd5e0;
+}
