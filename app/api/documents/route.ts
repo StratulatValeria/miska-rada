@@ -4,7 +4,7 @@ import path from "path";
 import { IDocument } from "@/app/types/document";
 
 export async function GET() {
-  const jsonDirectory = path.join(process.cwd(), "src/data");
+  const jsonDirectory = path.join(process.cwd(), "app/data");
   const fileContents = await fs.readFile(
     jsonDirectory + "/documents.json",
     "utf8",

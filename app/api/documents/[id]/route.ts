@@ -7,7 +7,7 @@ export async function GET(
   request: Request,
   { params }: { params: { id: string } },
 ) {
-  const jsonDirectory = path.join(process.cwd(), "src/data");
+  const jsonDirectory = path.join(process.cwd(), "app/data");
   const fileContents = await fs.readFile(
     jsonDirectory + "/documents.json",
     "utf8",

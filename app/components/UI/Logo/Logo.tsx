@@ -4,10 +4,10 @@ export const Logo = () => {
   return (
     <div className={styles.logoWrapper}>
       <svg className={styles.icon}>
-        <use xlinkHref="/sprite.svg#icon-logo" />
+        <use xlinkHref="/symbol-defs.svg#icon-logo" />
       </svg>
       <div className={styles.textBlock}>
-        <span className={styles.city}>СЛОВ`ЯНСЬК</span>
+        <span className={styles.city}>СЛОВ`ЯНСЬКА</span>
         <span className={styles.authority}>МІСЬКА РАДА</span>
       </div>
     </div>

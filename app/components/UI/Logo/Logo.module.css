@@ -3,13 +3,13 @@
   align-items: center;
   gap: 12px;
   text-decoration: none;
-  color: var(--primary-blue); /* Твій основний колір з globals.css */
+  color: var(--text-dark);
 }
 
 .icon {
-  width: 40px; /* Золотий стандарт для хедера */
+  width: 40px;
   height: 48px;
-  fill: currentColor; /* SVG буде приймати колір тексту */
+  fill: currentColor;
 }
 
 .textBlock {

@@ -12,7 +12,7 @@ export const Icon = ({ name, className, size = 24 }: IconProps) => {
       className={`${styles.icon} ${className}`}
       style={{ width: size, height: size }}
     >
-      <use xlinkHref={`/sprite.svg#${name}`} />
+      <use xlinkHref={`/public/symbol-defs.svg#${name}`} />
     </svg>
   );
 };
