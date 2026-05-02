@@ -1,9 +1,9 @@
 :root {
   --primary-blue: #0057b7;
-  --bg-light: #f8f9fa;
-  --text-dark: #212529;
-}
+  --bg-site: #f2f7f5;
 
+  --text-dark: #2d3748;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -11,23 +11,26 @@
 }
 
 body {
-  background-color: var(--bg-light);
+  background-color: var(--bg-site);
   color: var(--text-dark);
+  transition: background-color 0.3s ease;
 }
 
 .main-container {
-  max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  min-height: 80vh;
+  padding: 2rem 0;
 }
 
 html {
   height: 100%;
+  font-size: 18px;
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }

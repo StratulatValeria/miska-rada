@@ -1,19 +1,31 @@
 .container {
-  background: white;
-  padding: 1.5rem;
+  display: grid;
+  grid-template-areas:
+    "search search search btn"
+    "type sphere date status";
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  background: hwb(200 90% 8%);
+  border: 1px solid #d4deeb;
+  padding: 2rem;
   border-radius: 12px;
-  border: 1px solid #edf2f7;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  position: sticky;
-  top: 100px;
+  position: relative;
+}
+.searchWrapper {
+  grid-area: search;
 }
 
-.searchWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+.filterSection:nth-child(2) {
+  grid-area: type;
+}
+.filterSection:nth-child(3) {
+  grid-area: sphere;
+}
+.filterSection:nth-child(4) {
+  grid-area: date;
+}
+.filterSection:nth-child(5) {
+  grid-area: status;
 }
 
 .searchIcon {
@@ -24,7 +36,7 @@
 
 .searchInput {
   width: 100%;
-  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  padding-left: 40px;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-family: var(--font-inter);
@@ -67,18 +79,18 @@
   background: #f8f9fa;
   cursor: pointer;
 }
-
 .dateInputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
 .dateInput {
-  padding: 0.5rem;
+  width: 100%;
+  padding: 8px;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
-  font-size: 0.8rem;
+  font-size: 14px;
 }
 
 .applyBtn {
@@ -86,16 +98,53 @@
   margin-top: 0.5rem;
 }
 
-.resetLink {
+.resetBtn {
   background: none;
   border: none;
-  color: #a0aec0;
-  font-size: 0.85rem;
+  color: #465945;
+  font-size: 0.875rem;
   cursor: pointer;
   text-decoration: underline;
   text-align: center;
+  transition: color 0.2s;
+  margin-top: 2px;
 }
 
-.resetLink:hover {
-  color: var(--primary-blue);
+.resetBtn:hover {
+  color: #3a75c4;
+}
+
+.loaderOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  border-radius: inherit;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.pending {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.actionsWrapper {
+  grid-area: btn;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }

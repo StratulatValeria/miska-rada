@@ -1,92 +1,174 @@
 .tableContainer {
-  background: white;
+  background: #c3ccd5;
+  border: 1px solid #d4deeb;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow-x: auto;
+  width: 100%;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
+/* Заголовки */
 .table th {
-  background: #f8f9fa;
+  background: #edf2f0;
+  color: #475569;
   text-align: left;
-  padding: 1rem;
-  color: #6c757d;
+  padding: 18px 16px;
   font-weight: 600;
+  font-size: 0.95rem;
   border-bottom: 2px solid #edf2f7;
+  white-space: nowrap;
 }
 
+/* Комірки */
 .table td {
-  padding: 1rem;
+  padding: 20px 16px;
   border-bottom: 1px solid #edf2f7;
   vertical-align: middle;
+  color: var(--text-dark);
 }
-
+.row:nth-child(even) {
+  background-color: #ffffff;
+}
+.row:nth-child(odd) {
+  background-color: #f7faf9;
+}
 .row:hover {
-  background-color: #fcfcfd;
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease;
 }
 
+/* Блок Номер / Дата */
 .meta {
   display: flex;
   flex-direction: column;
+  min-width: 150px;
 }
 
 .number {
   font-weight: 700;
   color: var(--primary-blue);
+  font-size: 1.1rem;
+  margin-bottom: 4px;
 }
 
 .date {
-  font-size: 0.8rem;
-  color: #a0aec0;
+  font-size: 0.85rem;
+  color: #94a3b8;
 }
 
-.title a {
+/* Назва  */
+.title {
+  max-width: 500px;
+}
+
+.title :global(a) {
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--text-dark);
   text-decoration: none;
-  font-weight: 500;
+  display: inline-block;
   transition: color 0.2s;
 }
 
-.title a:hover {
+.title :global(a):hover {
   color: var(--primary-blue);
   text-decoration: underline;
 }
+/* сфера */
+.sphereTag {
+  background-color: #64748b;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+}
 
+/* Теги типів */
+.typeTag {
+  background-color: #abcdef;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.98rem;
+  color: #475569;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Статуси */
 .status {
-  padding: 0.25rem 0.75rem;
+  padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  color: rgb(238, 236, 244);
   white-space: nowrap;
 }
 
 .statusAccepted {
-  background: #e6fffa;
-  color: #2d3748;
-  border: 1px solid #b2f5ea;
+  background-color: #0f964e;
+  border: 1px solid #2e8b57;
 }
+
 .statusPending {
-  background: #fffaf0;
-  color: #2d3748;
-  border: 1px solid #feebc8;
+  background-color: #daa520;
+  border: 1px solid #e49b0f;
 }
+
 .statusRejected {
-  background: #fff5f5;
-  color: #2d3748;
-  border: 1px solid #feb2b2;
+  background-color: #ff0000;
+}
+/* Файли */
+.files {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fileLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 4px;
+  transition: transform 0.2s;
+}
+
+.fileLink:hover {
+  transform: translateY(-2px);
+}
+
+.fileIcon {
+  color: #64748b;
 }
 
 .fileBadge {
   text-transform: uppercase;
-  font-size: 0.65rem;
-  background: #edf2f7;
-  padding: 2px 4px;
+  font-size: 0.75rem;
+  background: #fff;
+  padding: 2px 6px;
   border-radius: 4px;
-  margin-right: 4px;
-  border: 1px solid #cbd5e0;
+  border: none;
+  color: #64748b;
+  font-weight: 800;
+}
+
+.fileLink[title*="PDF"] .fileBadge {
+  color: #e11d48;
+}
+.fileLink[title*="DOC"] .fileBadge {
+  color: #2563eb;
 }

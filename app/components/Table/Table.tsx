@@ -32,18 +32,29 @@ const Table = ({ data }: TableProps) => {
               </td>
               <td className={styles.title}>
                 <CustomLink href={`/documents/${doc.id}`} scroll={false}>
-                  {" "}
-                  {doc.title}{" "}
+                  {doc.title}
                 </CustomLink>
               </td>
               <td>
                 <span className={styles.typeTag}>{doc.type}</span>
               </td>
-              <td>{doc.sphere}</td>
+              <td>
+                <span className={styles.sphereTag}>{doc.sphere}</span>
+              </td>
               <td>
                 <span
                   className={`${styles.status} ${styles[getStatusClass(doc.status)]}`}
                 >
+                  <Icon
+                    name={
+                      {
+                        Прийнято: "icon-check",
+                        "На розгляді": "icon-hour",
+                        Скасовано: "icon-exlat",
+                      }[doc.status] || "icon-hour"
+                    }
+                    size={28}
+                  />
                   {doc.status}
                 </span>
               </td>
@@ -56,20 +67,9 @@ const Table = ({ data }: TableProps) => {
                     download
                     title={`Завантажити ${file.type.toUpperCase()}`}
                   >
-                    <Icon
-                      name={`icon-${file.type}`}
-                      size={20}
-                      className={styles.fileIcon}
-                    />
-                    <span className={styles.fileBadge}>{file.type}</span>
+                    <Icon name={`icon-${file.type}`} size={44} />
                   </a>
                 ))}
-                <button
-                  className={styles.downloadAll}
-                  title="Завантажити всі одним архівом"
-                >
-                  <Icon name="icon-download" size={18} />
-                </button>
               </td>
             </tr>
           ))}
