@@ -25,18 +25,10 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
 }
 
-.arrowPointer {
-  position: absolute;
-  top: -18px;
-  right: 930px;
-  color: #ffffff;
-  transform: rotate(10deg);
-  z-index: 10;
-  pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
-}
 .title {
   color: #ffffff;
   font-size: 48px;
@@ -73,17 +65,21 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (max-width: 768px) {
   .title {
     font-size: 32px;
   }
   .subtitle {
     font-size: 16px;
-  }
-}
-@media (max-width: 1024px) {
-  .arrowPointer {
-    display: none;
   }
 }
