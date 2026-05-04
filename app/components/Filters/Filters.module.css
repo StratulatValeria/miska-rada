@@ -13,6 +13,10 @@
 }
 .searchWrapper {
   grid-area: search;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .filterSection:nth-child(2) {
@@ -147,4 +151,29 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f1f5f9;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.clearBtn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+  transform: translateY(-50%) scale(1.1);
 }

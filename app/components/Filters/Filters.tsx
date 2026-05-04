@@ -2,33 +2,38 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { Icon } from "../UI/Icon/Icon";
-import { Loader } from "../UI/Loader/Loader";
 import styles from "./Filters.module.css";
 import { Select } from "../UI/Select/Select";
-import { useTransition } from "react";
+import { useTransition, useCallback, useEffect, useState } from "react";
 import { Input } from "../UI/Input/Input";
 import { Button } from "../UI/Button/Button";
-import { useEffect, useState } from "react";
 
 const Filters = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const [searchValue, setSearchValue] = useState(searchParams.get("q") || "");
 
-  const updateParams = (key: string, value: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+  const updateParams = useCallback(
+    (key: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
 
-    if (value) {
-      params.set(key, value);
-    } else {
-      params.delete(key);
-    }
+      if (value) {
+        params.set(key, value);
+      } else {
+        params.delete(key);
+      }
 
-    startTransition(() => {
-      router.push(`/documents?${params.toString()}`, { scroll: false });
-    });
-  };
+      if (key !== "page") {
+        params.delete("page");
+      }
+
+      startTransition(() => {
+        router.push(`/documents?${params.toString()}`, { scroll: false });
+      });
+    },
+    [router, searchParams],
+  );
 
   const handleReset = () => {
     setSearchValue("");
@@ -38,18 +43,18 @@ const Filters = () => {
   };
 
   useEffect(() => {
+    if (!searchValue && !searchParams.get("q")) return;
+
     const timeout = setTimeout(() => {
-      if (searchValue !== (searchParams.get("q") || "")) {
-        updateParams("q", searchValue);
-      }
+      updateParams("q", searchValue);
     }, 500);
 
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return (
     <div className={styles.container}>
-      {/* 1. Пошук  */}
       <div className={styles.searchWrapper}>
         <Input
           icon={<Icon name="icon-search" size={18} />}
@@ -58,9 +63,17 @@ const Filters = () => {
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
+        {searchValue && (
+          <button
+            className={styles.clearBtn}
+            onClick={() => setSearchValue("")}
+            type="button"
+            title="Очистити пошук"
+          >
+            <Icon name="icon-cross" size={14} />
+          </button>
+        )}
       </div>
-
-      {/* 2. Тип документа  */}
       <div className={styles.filterSection}>
         <h4 className={styles.sectionTitle}>Тип документа</h4>
         <Select
@@ -74,7 +87,6 @@ const Filters = () => {
         />
       </div>
 
-      {/* 3. Сфера діяльності  */}
       <div className={styles.filterSection}>
         <h4 className={styles.sectionTitle}>Сфера діяльності</h4>
         <div className={styles.checkboxGroup}>
@@ -96,7 +108,6 @@ const Filters = () => {
         </div>
       </div>
 
-      {/* 4. Дата  */}
       <div className={styles.filterSection}>
         <h4 className={styles.sectionTitle}>Дата</h4>
         <div className={styles.dateInputs}>
@@ -104,7 +115,6 @@ const Filters = () => {
             type="date"
             className={styles.dateInput}
             value={searchParams.get("from") || ""}
-            max={searchParams.get("to") || undefined}
             onChange={(e) => updateParams("from", e.target.value)}
           />
           <span>/</span>
@@ -112,13 +122,11 @@ const Filters = () => {
             type="date"
             className={styles.dateInput}
             value={searchParams.get("to") || ""}
-            min={searchParams.get("from") || undefined}
             onChange={(e) => updateParams("to", e.target.value)}
           />
         </div>
       </div>
 
-      {/* 5. Статус */}
       <div className={styles.filterSection}>
         <h4 className={styles.sectionTitle}>Статус</h4>
         <div className={styles.checkboxGroup}>
@@ -135,13 +143,9 @@ const Filters = () => {
           ))}
         </div>
       </div>
+
       <div className={styles.actionsWrapper}>
-        {isPending && (
-          <div className={styles.loaderOverlay}>
-            <Loader />
-          </div>
-        )}
-        <Button> Пошук </Button>
+        <Button onClick={() => updateParams("q", searchValue)}> Пошук </Button>
         <button className={styles.resetBtn} onClick={handleReset}>
           Скинути
         </button>

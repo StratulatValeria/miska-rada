@@ -1,0 +1,89 @@
+.hero {
+  background-image: url("/hero.png");
+  background-size: cover;
+  background-position: center;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.overlay {
+  background: rgb(255 255 255 / 11%);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  opacity: 3;
+}
+
+.container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.arrowPointer {
+  position: absolute;
+  top: -18px;
+  right: 930px;
+  color: #ffffff;
+  transform: rotate(10deg);
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+.title {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  color: #e2e8f0;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 600px;
+}
+
+.ctaButton {
+  background-color: #2563eb;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.ctaButton:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  .arrowPointer {
+    display: none;
+  }
+}
