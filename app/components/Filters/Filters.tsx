@@ -81,6 +81,8 @@ const Filters = () => {
             { value: "", label: "Всі типи" },
             { value: "Рішення", label: "Рішення ради" },
             { value: "Розпорядження", label: "Розпорядження" },
+            { value: "Наказ управління", label: "Наказ управління" },
+            { value: "Протоколи засідань", label: "Протоколи засідань" },
           ]}
           value={searchParams.get("type") || ""}
           onChange={(e) => updateParams("type", e.target.value)}
