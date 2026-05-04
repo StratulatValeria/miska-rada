@@ -177,3 +177,37 @@
   color: #1e293b;
   transform: translateY(-50%) scale(1.1);
 }
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+    grid-template-areas: none;
+  }
+
+  .filterSection {
+    width: 100%;
+  }
+
+  .select,
+  .searchInput,
+  .dateInput {
+    width: 100% !important;
+    height: 45px;
+  }
+
+  .dateInputs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dateInputs span {
+    display: none;
+  }
+
+  .actionsWrapper {
+    margin-top: 10px;
+  }
+}
